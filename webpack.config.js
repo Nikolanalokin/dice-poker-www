@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const path = require('path')
 const webpack = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
@@ -20,9 +22,7 @@ module.exports = (env, argv) => {
     output: {
       path: config.prod.assetsRoot,
       filename: `js/[name].[contenthash].js`,
-      publicPath: isProduction
-        ? config.prod.assetsPublicPath
-        : config.dev.assetsPublicPath,
+      publicPath: isProduction ? config.prod.assetsPublicPath : config.dev.assetsPublicPath,
       assetModuleFilename: `assets/[hash][ext][query]`
     },
     resolve: {
@@ -143,7 +143,9 @@ module.exports = (env, argv) => {
       },
     },
     plugins: [
-      // new webpack.DefinePlugin({}),
+      new webpack.DefinePlugin({
+        WS_URL: JSON.stringify(process.env.WS_URL)
+      }),
       // new webpack.SourceMapDevToolPlugin({
       //   filename: '[file].map'
       // }),

@@ -2,7 +2,7 @@
 *node_modules
 
 # distribution
-# *dist
+*dist
 
 # misc
 .DS_Store
@@ -17,3 +17,4 @@ yarn-error.log*
 .vscode
 
 # etc
+.env

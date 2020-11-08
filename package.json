@@ -1,7 +1,7 @@
 {
   "name": "dice-poker-www",
   "version": "1.0.0",
-  "description": "Multiplayer dice poker game",
+  "description": "Client of multiplayer dice poker game",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",

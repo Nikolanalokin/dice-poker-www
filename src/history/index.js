@@ -65,7 +65,9 @@ function syncHistoryWithStore (history, store) {
   return history
 }
 
-const browserHistory = createBrowserHistory()
+const browserHistory = createBrowserHistory({
+  basename: BASE_URL
+})
 
 export const routeStore = new RouteStore(browserHistory)
 

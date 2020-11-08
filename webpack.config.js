@@ -13,6 +13,7 @@ const config = require('./build/config')
 
 module.exports = (env, argv) => {
   let isProduction = argv.mode === 'production'
+  let baseUrl = isProduction ? config.prod.assetsPublicPath : config.dev.assetsPublicPath
   // console.log(env, argv)
   return {
     mode: argv.mode,
@@ -22,7 +23,7 @@ module.exports = (env, argv) => {
     output: {
       path: config.prod.assetsRoot,
       filename: `js/[name].[contenthash].js`,
-      publicPath: isProduction ? config.prod.assetsPublicPath : config.dev.assetsPublicPath,
+      publicPath: baseUrl,
       assetModuleFilename: `assets/[hash][ext][query]`
     },
     resolve: {
@@ -38,7 +39,7 @@ module.exports = (env, argv) => {
         ? config.prod.devtool
         : false,
     devServer: {
-      contentBase: path.join(__dirname, 'dist'),
+      contentBase: path.join(__dirname, 'src'),
       // By default files from `contentBase` will not trigger a page reload.
       watchContentBase: true,
       // Reportedly, this avoids CPU overload on some systems.
@@ -144,6 +145,7 @@ module.exports = (env, argv) => {
     },
     plugins: [
       new webpack.DefinePlugin({
+        BASE_URL: JSON.stringify(baseUrl),
         WS_URL: JSON.stringify(process.env.WS_URL)
       }),
       // new webpack.SourceMapDevToolPlugin({

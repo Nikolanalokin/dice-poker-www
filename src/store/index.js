@@ -55,7 +55,7 @@ class Store {
 
     this.router = routeStore
 
-    this._socket = io('localhost:3000')
+    this._socket = io('https://dice-poker.herokuapp.com/')
     this._socket.on('connect', () => {
       console.log('[socket:on:connect]')
     })

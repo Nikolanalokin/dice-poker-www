@@ -1,4 +1,4 @@
 # dice-poker-www
-Client of multiplayer dice poker game
+Multiplayer dice poker client implemented in React and mobX.
 
-https://nikolanalokin.github.io/dice-poker-www/
+[Demo](https://nikolanalokin.github.io/dice-poker-www/)

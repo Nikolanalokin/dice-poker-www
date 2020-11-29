@@ -30,12 +30,12 @@ body {
   margin: 0 auto;
 
   display: grid;
-  grid-template-columns: auto minmax(432px, 1fr);
+  grid-template-columns: auto minmax(432px, 1fr) 300px;
   grid-template-rows: auto auto 1fr;
   grid-template-areas:
-    "table board"
-    "table shot"
-    "table dice";
+    "table board chat"
+    "table shot chat"
+    "table dice chat";
   gap: 16px 24px;
 }
 
@@ -46,6 +46,11 @@ body {
   align-items: center;
   justify-content: space-between;
 }
+
+.chat-container {
+  grid-area: chat;
+}
+
 .dice-container {
   grid-area: dice;
   &__title {
@@ -384,4 +389,27 @@ a {
   font-size: 14px;
   line-height: 16px;
   font-weight: 400;
+}
+
+
+.chat-container {
+  border: 1px solid white;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+}
+.chat-messages-wrap {
+  flex: 1;
+  overflow-y: auto;
+}
+.chat-input-wrap {
+  padding: 8px;
+}
+.chat-message {
+  padding: 4px 8px;
+  @extend .t-body;
+  color: white;
+  &__sender {
+    font-weight: 700;
+  }
 }

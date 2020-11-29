@@ -1,14 +1,12 @@
 import React from 'react'
-import { observer } from "mobx-react"
+import { observer } from "mobx-react-lite"
 
-import {
-  Link
-} from "react-router-dom"
+import { Link } from "react-router-dom"
 
-import store from '../store'
+import { gameStore, userStore } from '../../store'
 
-import Header from './Header'
-import FormCreateRoom from './FormCreateRoom'
+import Header from '../layout/Header'
+import FormCreateRoom from '../forms/FormCreateRoom'
 
 const HomePage = observer(() => {
 
@@ -23,16 +21,16 @@ const HomePage = observer(() => {
     <div className="page">
       <Header
         title="Dice Poker"
-        right={<Link to="/profile" className="button button--flat">Профиль: {store.userData.name}</Link>} />
+        right={<Link to="/profile" className="button button--flat">Профиль: {userStore.user.name}</Link>} />
 
       <main className="main">
-        <FormCreateRoom createRoom={store.createRoom} />
+        <FormCreateRoom createRoom={gameStore.createRoom} />
         {
-          store.rooms.length > 0 && <div className="block">
+          gameStore.rooms.length > 0 && <div className="block">
             <div className="room-list">
               {
-                store.rooms.map(v => (
-                  <div className="room-list-item" key={v.id} onClick={() => store.joinRoom(v.id)}>
+                gameStore.rooms.map(v => (
+                  <div className="room-list-item" key={v.id} onClick={() => gameStore.joinRoom(v.id)}>
                     <div className="room-list-item__meta">Название: <b>{v.name}</b></div>
                     <div className="room-list-item__meta">Игроков: <b>{v.users.length}/{v.maxUsers}</b></div>
                     <div className="room-list-item__meta">Статус: <b>{getStatus(v)}</b></div>

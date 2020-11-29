@@ -1,13 +1,13 @@
-import { observer } from 'mobx-react'
+import { observer } from 'mobx-react-lite'
 import React, { useState } from 'react'
 
-import store from '../store'
+import { gameStore } from '../../store'
 
 const FormCreateRoom = observer(() => {
   const [value, setValue] = useState('')
 
   let handleSubmit = (event) => {
-    store.createRoom(value)
+    gameStore.createRoom(value)
     setValue('')
     event.preventDefault()
   }

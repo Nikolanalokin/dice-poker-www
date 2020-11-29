@@ -1,11 +1,11 @@
 import React from 'react'
 
-import dice_1 from '../assets/img/dice_1.svg'
-import dice_2 from '../assets/img/dice_2.svg'
-import dice_3 from '../assets/img/dice_3.svg'
-import dice_4 from '../assets/img/dice_4.svg'
-import dice_5 from '../assets/img/dice_5.svg'
-import dice_6 from '../assets/img/dice_6.svg'
+import dice_1 from '../../assets/img/dice_1.svg'
+import dice_2 from '../../assets/img/dice_2.svg'
+import dice_3 from '../../assets/img/dice_3.svg'
+import dice_4 from '../../assets/img/dice_4.svg'
+import dice_5 from '../../assets/img/dice_5.svg'
+import dice_6 from '../../assets/img/dice_6.svg'
 
 const IMGS = {
   dice_1,

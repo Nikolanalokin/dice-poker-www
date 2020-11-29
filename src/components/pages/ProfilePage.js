@@ -1,11 +1,9 @@
 import React from 'react'
-import { observer } from "mobx-react"
+import { observer } from "mobx-react-lite"
 
-import {
-  Link
-} from "react-router-dom"
+import { Link } from "react-router-dom"
 
-import Header from './Header'
+import Header from '../layout/Header'
 
 const ProfilePage = observer(() => {
   return (

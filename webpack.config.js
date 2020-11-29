@@ -27,7 +27,7 @@ module.exports = (env, argv) => {
       assetModuleFilename: `assets/[hash][ext][query]`
     },
     resolve: {
-      extensions: ['.js', '.json', '.jsx', '.scss', '.css'],
+      extensions: [/* '.tsx', '.ts',  */'.js', '.json', '.jsx', '.scss', '.css'],
       alias: {
         '@': path.resolve(__dirname, './src'),
         // 'react-dom': isProduction ? 'react-dom' : '@hot-loader/react-dom'
@@ -71,9 +71,12 @@ module.exports = (env, argv) => {
     module: {
       rules: [
         {
-          test: /\.m?jsx?$/,
+          test: /\.[jt]sx?$/,
           exclude: /(node_modules|bower_components)/,
           use: [
+            // {
+            //   loader: 'ts-loader'
+            // },
             {
               loader: 'babel-loader',
               options: {
@@ -85,7 +88,7 @@ module.exports = (env, argv) => {
           ]
         },
         {
-          test: /\.s[ac]ss$/i,
+          test: /\.(sa|sc|c)ss$/i,
           use: [
             // // Creates `style` nodes from JS strings
             argv.mode !== 'production' ? 'style-loader' : MiniCssExtractPlugin.loader,
@@ -146,7 +149,8 @@ module.exports = (env, argv) => {
     plugins: [
       new webpack.DefinePlugin({
         BASE_URL: JSON.stringify(baseUrl),
-        WS_URL: JSON.stringify(process.env.WS_URL)
+        WS_URL: JSON.stringify(process.env.WS_URL),
+        PRODUCTION: JSON.stringify(isProduction)
       }),
       // new webpack.SourceMapDevToolPlugin({
       //   filename: '[file].map'
